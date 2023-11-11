@@ -90,4 +90,20 @@ void free_function(char **double_point)
 		free(*double_point++);
 	free(tmp);
 }
+/**
+ *
+ *
+ *
+void intialize_env()
+{
+char *term_value = getenv("TERM");
+if (term_value == NULL)
+{
+
+
+	setenv("TERM", "xtrem-256color", 1);
+}
+
+system("clear");
+}*/
 

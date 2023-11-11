@@ -30,5 +30,6 @@ char *get_executable_path(char **envp);
 int _strcmp(char *s1, char *s2);
 void print_env(char **envp);
 void free_function(char **double_point);
-
+/* functions in main.c: */
+void index_function(char *buffer, char **envp);
 #endif /* _MY_SHELL */

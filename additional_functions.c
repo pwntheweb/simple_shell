@@ -11,7 +11,7 @@ void handle_signal(int sig)
 }
 
 /**
- * get_executable_path - function to retrieve the PATH from environment variables
+ * get_executable_path - function to retrieve the PATH
  * @envp: Pointer to the environment variables
  *
  * Return: Pointer to the PATH string

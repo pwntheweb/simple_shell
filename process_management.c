@@ -9,25 +9,25 @@
  */
 int custom_fork(char **arr, char **envp)
 {
-        int status;
-        pid_t pid;
-
-        switch (pid = fork())
-        {
-                case -1:
-                        perror("Error");
-                        return (-1);
-                case 0:
-                        execve(arr[0], arr, envp);
-                        perror("Error");
-                        break;
-                default:
-                        do
-                                waitpid(pid, &status, WUNTRACED);
-                        while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
-                        break;
-        }
-        return (0);
+	int status;
+	pid_t pid;
+	
+	switch (pid = fork())
+	{
+		case -1:
+			perror("Error");
+			return (-1);
+		case 0:
+			execve(arr[0], arr, envp);
+			perror("Error");
+			break;
+		default:
+			do
+				waitpid(pid, &status, WUNTRACED);
+			while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
+			break;
+	}
+	return (0);
 }
 /**
  * check_in_path - Check if the command is found in the PATH

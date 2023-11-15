@@ -11,7 +11,7 @@ int custom_fork(char **arr, char **envp)
 {
 	int status;
 	pid_t pid;
-	
+
 	switch (pid = fork())
 	{
 		case -1:
@@ -72,8 +72,9 @@ int check_in_path(char **arr_words, char *e_path)
 }
 
 /*
- * execute_commands - Executes commands
+ * execute_commands - It executes commands
  * @commands: An array of strings
+ *
  * Return: Void
  */
 void execute_commands(char **commands)

@@ -34,43 +34,43 @@ int words_in_string(char *str)
  */
 char **split_string(char *str, char *delim)
 {
-        char **words = NULL, *token, *buffer;
-        int i = 0, aux = 0, count_words = 0, j = 0;
+	char **words = NULL, *token, *buffer;
+	int i = 0, aux = 0, count_words = 0, j = 0;
 
-        while (str[j])
-        {
-                if (str[j] == '\n')
-                        str[j] = '\0';
-                j++;
-        }
+	while (str[j])
+	{
+		if (str[j] == '\n')
+			str[j] = '\0';
+		j++;
+	}
 
-        count_words = words_in_string(str);
-        buffer = malloc(sizeof(char) * (_strlen(str) + 1));
-        if (!buffer)
-                return (NULL);
-        words = malloc(sizeof(char *) * (count_words + 1));
-        if (!words)
-                return (NULL);
-        _strcpy(buffer, str);
-        token = strtok(buffer, delim);
+	count_words = words_in_string(str);
+	buffer = malloc(sizeof(char) * (_strlen(str) + 1));
+	if (!buffer)
+		return (NULL);
+	words = malloc(sizeof(char *) * (count_words + 1));
+	if (!words)
+		return (NULL);
+	_strcpy(buffer, str);
+	token = strtok(buffer, delim);
 
-        while (token)
-        {
-                words[i] = malloc(sizeof(char) * (_strlen(token) + 1));
-                if (!words[i])
-                {
-                        for (aux = i; aux >= 0; aux--)
-                                free(words[aux]);
-                        free(words);
-                        return (NULL);
-                }
-                _strcpy(words[i], token);
-                token = strtok(NULL, delim);
-                i++;
-        }
-        words[i] = NULL;
-        free(buffer);
-        return (words);
+	while (token)
+	{
+		words[i] = malloc(sizeof(char) * (_strlen(token) + 1));
+		if (!words[i])
+		{
+			for (aux = i; aux >= 0; aux--)
+				free(words[aux]);
+			free(words);
+			return (NULL);
+		}
+		_strcpy(words[i], token);
+		token = strtok(NULL, delim);
+		i++;
+	}
+	words[i] = NULL;
+	free(buffer);
+	return (words);
 }
 /**
  * index_function - Test the array and choose the correct function to use

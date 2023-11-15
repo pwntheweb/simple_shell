@@ -70,3 +70,46 @@ int check_in_path(char **arr_words, char *e_path)
 	free_function(cat_words);
 	return (flag);
 }
+
+/*
+ *
+ */
+void execute_commands(char **commands)
+{
+	/*(void)envp;*/
+
+	pid_t pid;
+	int status;
+	int i;
+
+	for (i = 0; commands[i] != NULL; i++)
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			if (pid == 0)
+			{
+				execvp(commands[i], commands);
+				perror("execvp");
+				exit(EXIT_FAILURE);
+			}
+			else if (pid < 0)
+			{
+				perror("fork");
+				exit(EXIT_FAILURE);
+			}
+			waitpid(pid, &status, 0);
+
+			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+			{
+				printf("Command failed: %s\n", commands[i]);
+				break;
+			}
+			else if (!WIFEXITED(status) && strstr(commands[i], "&&") != NULL)
+			{
+				printf("Command failed: %s\n", commands[i + 1]);
+				break;
+			}
+		}
+	}
+}

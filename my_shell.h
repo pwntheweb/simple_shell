@@ -32,4 +32,6 @@ void print_env(char **envp);
 void free_function(char **double_point);
 /* functions in main.c: */
 void index_function(char *buffer, char **envp);
+
+void execute_commands(char **commands);
 #endif /* _MY_SHELL */

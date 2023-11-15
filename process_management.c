@@ -70,4 +70,3 @@ int check_in_path(char **arr_words, char *e_path)
 	free_function(cat_words);
 	return (flag);
 }
-

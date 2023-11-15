@@ -72,7 +72,9 @@ int check_in_path(char **arr_words, char *e_path)
 }
 
 /*
- *
+ * execute_commands - Executes commands
+ * @commands: An array of strings
+ * Return: Void
  */
 void execute_commands(char **commands)
 {
